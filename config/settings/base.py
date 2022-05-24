@@ -1,8 +1,6 @@
 """
 Base settings to build other settings files upon.
 """
-import cloudinary
-import cloudinary_storage
 from pathlib import Path
 
 import environ
@@ -43,7 +41,6 @@ LOCALE_PATHS = [str(ROOT_DIR / "locale")]
 
 
 # https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = ["localhost", "0.0.0.0", "127.0.0.1" ,"*"]
 
 
 # DATABASES
@@ -70,6 +67,7 @@ DJANGO_APPS = [
     "django.contrib.sessions",
     "django.contrib.sites",
     "django.contrib.messages",
+    "whitenoise.runserver_nostatic",
     "django.contrib.staticfiles",
     # "django.contrib.humanize", # Handy template tags
     "django.contrib.admin",
@@ -81,8 +79,6 @@ THIRD_PARTY_APPS = [
     "ckeditor",
     "ckeditor_uploader",
     "hitcount"
-    'cloudinary',
-    'cloudinary_storage',
     
 ]
 
@@ -174,13 +170,13 @@ STATICFILES_FINDERS = [
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 # MEDIA
 # ------------------------------------------------------------------------------
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': <your cloud name>,
-    'API_KEY': <your api key>,
-    'API_SECRET': <your secret api>,
-}
+#CLOUDINARY_STORAGE = {
+ #   'CLOUD_NAME': <your cloud name>,
+  #  'API_KEY': <your api key>,
+   # 'API_SECRET': <your secret api>,
+#}
 
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+#DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # https://docs.djangoproject.com/en/dev/ref/settings/#media-root
 MEDIA_ROOT = str(APPS_DIR / "media")

@@ -2,8 +2,8 @@
 
 Werkzeug[watchdog]==2.0.3 # https://github.com/pallets/werkzeug
 ipdb==0.13.9  # https://github.com/gotcha/ipdb
-#psycopg2==2.9.3  # https://github.com/psycopg/psycopg2
-psycopg2-binary==2.9.3
+psycopg2==2.9.3  # https://github.com/psycopg/psycopg2
+#psycopg2-binary==2.9.3
 # Testing
 # ------------------------------------------------------------------------------
 mypy==0.931  # https://github.com/python/mypy
@@ -25,13 +25,6 @@ black==22.1.0  # https://github.com/psf/black
 pylint-django==2.5.2  # https://github.com/PyCQA/pylint-django
 pre-commit==2.17.0  # https://github.com/pre-commit/pre-commit
 
-
-whitenoise
-gunicorn==20.1.0  # https://github.com/benoitc/gunicorn
-psycopg2==2.9.3  # https://github.com/psycopg/psycopg2
-Collectfast==2.2.0  # https://github.com/antonagestam/collectfast
-
-
 # Django
 # ------------------------------------------------------------------------------
 factory-boy==3.2.1  # https://github.com/FactoryBoy/factory_boy
@@ -42,6 +35,3 @@ django-coverage-plugin==2.0.2  # https://github.com/nedbat/django_coverage_plugi
 pytest-django==4.5.2  # https://github.com/pytest-dev/pytest-django
 django-storages[boto3]==1.12.3  # https://github.com/jschneier/django-storages
 django-anymail[mailgun]==8.5  # https://github.com/anymail/django-anymail
-django-heroku
-cloudinary 
-django-cloudinary-storage
