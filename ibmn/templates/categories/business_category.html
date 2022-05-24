@@ -1,0 +1,257 @@
+{% extends "base.html" %}
+
+{% load static i18n %}
+
+
+{% block content %}
+
+
+    <!-- Slider Section Start Here -->
+    <div class="container">
+        <div class="row">               
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 padding-0">
+                <div class="slider-area-sub">
+                    <div class="bend niceties preview-2">
+                        {% if big_news.image %}
+                        <div id="ensign-nivoslider" class="slides">
+                            <img src="{{big_news.image.url}}" alt="" class="calimg" title="#slider-direction-1" />                       
+                        </div>
+                        {% endif %} 
+                        <!-- direction 2 -->
+                        <div id="slider-direction-1" class="slider-direction">
+                            <div class="slider-content t-cn s-tb slider-1">
+                                <div class="title-container s-tb-c">
+                                    <div class="slider-botton">
+                                        <ul>
+                                            <li>
+                                                <a class="cat-link" href="{% url 'bignews:bignews_detail' big_news.slug %}">Business</a> 
+                                                <span class="date"> 
+                                                    <i class="fa fa-calendar-check-o" aria-hidden="true"></i>{{big_news.pub_date}}
+                                                </span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <h1 class="title1"><a href="{% url 'bignews:bignews_detail' big_news.slug %}"> {{big_news.title}}</a></h1>
+                                    <div class="title2">{{big_news.short_txt}}.</div>
+                                </div>
+                            </div>
+                        </div>
+                         <!-- direction 2 -->
+                    </div>
+                </div>
+            </div>
+            <!-- Slider  Area End Here-->
+
+        <!-- Trending  starts Here-->
+
+
+                <!--Sidebar Start Here -->
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 paddimg-left-none sidebar-latest">
+                    <!--trending Post Start Here -->
+                        <h3 class="title-bg">Trending News</h3>
+                       <div class="hot-news trending">
+                        <ul class="news-post">
+                            {% for news in popular_news %}
+                            <li>
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 content">
+                                        <div class="item-post">
+                                            <div class="row">
+                                                {% if big_news.image %}
+                                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-3 paddimg-right-none">
+                                                    <img src="{{news.image.url}}" alt="" title="News image">
+                                                </div>
+                                                {% endif %} 
+                                                <div class="col-lg-8 col-md-8 col-sm-12 col-xs-9">
+                                                    <h4><a href="#"> {{news.short_txt}}</a></h4>
+                                                    <span class="date"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> {{news.pub_date}}</span>                                                
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            {% endfor %}
+                            
+                        </ul>
+                    </div> 
+                    <!--popular Post End Here --> 
+
+                    <!--Recent comments Start Here -->
+                    <!--Recent comments Start Here -->
+                     <!--Add Start Here -->
+                  
+                    <!--Add Box End Here -->          
+                </div>
+            </div>
+
+
+            
+        <!-- trending Area End Here-->
+
+
+        </div>
+    </div>
+
+
+
+
+
+
+    <!-- Slider Section end Here -->
+    <!-- All News Section Start Here -->
+    
+
+    
+    <!-- Hot News Start Here -->
+
+     <!-- Hot News Start Here -->
+     <div class="hot-news">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-12 col-md-8 col-sm-8 col-xs-12">
+                    <!--Around Area Start Here -->
+                        <div class="view-area separator-large3">
+                                <div class="row">
+                                    <div class="col-sm-8"> 
+                                        <h3 class="title-bg">Global</h3>
+                                    </div>
+                                    <div class="col-sm-4 text-right">
+                                        <a href="{% url 'categories:business_global' %}">View More <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                                    </div>
+                            </div>
+                        </div> 
+                        <ul class="news-post news-post2 around-news">
+                        <li>
+                            <div class="row">
+
+                                {% for global_subs in global_sub  %}
+                                {% for news in global_subs.categories.all|slice:"4"  %}
+
+
+                                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 content">
+                                    <div class="item-post">
+                                        <div class="blog-image">
+                                            {% if news.image %}
+                                            <a href="{% url 'news:news_detail' news.slug %}"><img src="{{news.image.url}}" alt="" title="News image" /></a>
+                                            {% endif %} 
+                                        </div>
+                                        <div class="content">
+                                            <span class="date">
+                                                <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+                                                {{news.pub_date}}
+                                            </span>
+                                            <h4><a href="{% url 'news:news_detail' news.slug %}">{{news.short_txt}}</a></h4>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {% endfor %}
+
+                                {% endfor %}
+
+                            </div>
+                        </li>
+                    </ul>                   
+                
+                    <div class="view-area separator-large3">
+                        <div class="row">
+                            <div class="col-sm-8"> 
+                                <h3 class="title-bg">Local</h3>
+                            </div>
+                            <div class="col-sm-4 text-right">
+                                <a href="{% url 'categories:business_local' %}">View More <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                            </div>
+                    </div>
+                </div> 
+              
+                <ul class="news-post news-post2 around-news">
+                    <li>
+                        <div class="row">
+
+                            {% for global_subs in local_sub  %}
+                            {% for news in global_subs.categories.all|slice:"4"  %}
+
+
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 content">
+                                <div class="item-post">
+                                    <div class="blog-image">
+                                        {% if news.image %}
+                                        <a href="{% url 'news:news_detail' news.slug %}"><img src="{{news.image.url}}" alt="" title="News image" /></a>
+                                        {% endif %} 
+                                    </div>
+                                    <div class="content">
+                                        <span class="date">
+                                            <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+                                            {{news.pub_date}}
+                                        </span>
+                                        <h4><a href="{% url 'news:news_detail' news.slug %}">{{news.short_txt}}</a></h4>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {% endfor %}
+
+                            {% endfor %}
+
+                        </div>
+                    </li>
+                </ul>                                
+            <div class="view-area separator-large3">
+                <div class="row">
+                    <div class="col-sm-8"> 
+                        <h3 class="title-bg">Igbo</h3>
+                    </div>
+                    <div class="col-sm-4 text-right">
+                        <a href="{% url 'categories:business_igbo' %}">View More <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                    </div>
+            </div>
+        </div> 
+        <ul class="news-post news-post2 around-news">
+            <li>
+                <div class="row">
+
+                    {% for global_subs in ibgo_sub  %}
+                    {% for news in global_subs.categories.all|slice:"4"  %}
+
+
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 content">
+                        <div class="item-post">
+                            <div class="blog-image">
+                                {% if news.image %}
+                                <a href="{% url 'news:news_detail' news.slug %}"><img src="{{news.image.url}}" alt="" title="News image" /></a>
+                                {% endif %} 
+                            </div>
+                            <div class="content">
+                                <span class="date">
+                                    <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+                                    {{news.pub_date}}
+                                </span>
+                                <h4><a href="{% url 'news:news_detail' news.slug %}">{{news.short_txt}}</a></h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    {% endfor %}
+
+                    {% endfor %}
+
+                </div>
+            </li>
+        </ul>                 
+
+   
+              
+</div>
+          
+</div>
+      
+</div>
+  
+</div>
+    
+    <!-- All News Section end Here -->
+
+
+{% endblock %}

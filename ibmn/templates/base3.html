@@ -1,0 +1,103 @@
+{% load static i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+
+<!-- Mirrored from rstheme.com/products/html/news24/news-magazine/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 10 Feb 2022 23:55:42 GMT -->
+<head>
+    <meta charset="utf-8">    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block head_title %} IBNM {% endblock %}</title>    
+    <link rel="apple-touch-icon" href="apple-touch-icon.html">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/ibmnlogo4.png' %}">
+    <!-- Place favicon.ico in the root directory -->
+    
+    <!-- all css here -->
+    {% block css %}
+    <!-- bootstrap v3.3.6 css -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <!-- font-awesome css -->
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <!-- animate css -->
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <!-- hover-min css -->
+    <link rel="stylesheet" href="{% static 'css/hover-min.css' %}">
+      <!-- magnific-popup css -->
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+    <!-- meanmenu css -->
+    <link rel="stylesheet" href="{% static 'css/meanmenu.min.css' %}">
+    <!-- owl.carousel css -->
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
+    <!-- lightbox css -->
+    <link href="{% static 'css/lightbox.min.css' %}" rel="stylesheet">
+    <!-- nivo slider CSS -->
+    <link rel="stylesheet" href="{% static 'css/nivo-slider.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'css/preview.css' %}" type="text/css" media="screen" />
+    <!-- style css -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- responsive css -->
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+    <!-- modernizr js -->
+    {% endblock %}
+    
+
+   
+</head>
+
+{% block body %}
+<body class="home">
+	<!--Preloader area Start here-->
+	<div class="preloader">
+		 <div class="sk-cube-grid">
+			<div class="sk-cube sk-cube1"></div>
+			<div class="sk-cube sk-cube2"></div>
+			<div class="sk-cube sk-cube3"></div>
+			<div class="sk-cube sk-cube4"></div>
+			<div class="sk-cube sk-cube5"></div>
+			<div class="sk-cube sk-cube6"></div>
+			<div class="sk-cube sk-cube7"></div>
+			<div class="sk-cube sk-cube8"></div>
+			<div class="sk-cube sk-cube9"></div>
+		  </div>
+	</div>
+	<!--Preloader area end here-->
+	
+    <!--Header area start here-->
+    {% block header %}
+    {% include 'headers.html' %}
+    {% endblock %}
+
+    <!--Header area end here-->
+
+
+    <!-- Slider Section Start Here -->
+    {% block content %}
+    <!-- Add content here -->
+    {% endblock %}
+    <!-- All News Section end Here -->
+
+
+
+
+
+    
+
+    <!-- Footer Area Section Start Here -->
+
+    {% block footer %}
+    {% include 'footers.html' %}
+
+    {% endblock %}
+
+    <!-- Footer Area Section End Here -->
+    
+</body>
+    {% endblock %}
+
+
+<!-- Mirrored from rstheme.com/products/html/news24/news-magazine/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 10 Feb 2022 23:57:51 GMT -->
+</html>

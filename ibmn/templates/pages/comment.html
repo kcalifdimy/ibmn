@@ -1,0 +1,43 @@
+<div class="border-0 border-start border-2 ps-2" id="{{comment.id}}">
+
+    <div class="mt-3">
+        <strong>{{comment.name}}</strong> 
+        {% if  comment.parent.name%} replied to <strong>{{comment.parent.name}}</strong>{% endif %}
+        <small class="text-muted">On {{ comment.pub_date.date }}</small>
+
+    </div>
+        <p>{{comment.content}}</p>
+        <button class="btn btn-danger btn-sm" onclick="handleReply({{comment.id}})">Reply</button>
+    
+        <div id="reply-form-container-{{comment.id}}" style="display:none">
+        
+            <form method="post" action="{% url 'news:reply' %}" class="mt-3">
+                {% csrf_token %}
+                
+                 <fieldset>
+                <input type="hidden" name="news_id" value="{{news.id}}">
+                <input type="hidden" name="parent" value="{{comment.id}}">
+                <input type="hidden" name="news_url" value="{{news.get_absolute_url}}">
+                        <div class="form-group">
+                            <label>Name*</label>
+                            {{comment_form.name}}
+                        </div>
+                        <div class="form-group">
+                            <label>Email*</label>
+                            {{comment_form.email}}
+                        </div>
+                        <div class="form-group">
+                            <label>Your comment here...</label>
+                            {{comment_form.content}}
+                        </div>
+                        <div class="form-group">
+                            <button type="button" onclick="handleCancel({{comment.id}})" class="btn btn-danger btn-sm">Cancel</button>
+                            <button class="btn btn-danger btn-sm" type="submit">Make Comment</button>
+                        </div>
+                    </fieldset>
+            </form>
+        </div>
+    {% for comment in comment.get_comments %}
+        {% include 'pages/comment.html' with comment=comment %}
+    {% endfor %}
+</div>

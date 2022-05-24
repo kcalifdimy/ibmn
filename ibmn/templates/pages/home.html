@@ -1,0 +1,587 @@
+{% extends "base.html" %}
+
+{% load static i18n %}
+
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-0">
+                <div class="wrapper">
+                <!-- News Slider -->
+                    <div class="ticker marg-botm">
+                        <div class="ticker-wrap">
+                            <!-- News Slider Title -->
+                            <div class="ticker-head up-case backg-colr col-md-2">Breaking News <i class="fa fa-angle-double-right" aria-hidden="true"></i></div>
+                            <div class="tickers col-md-10">
+                                <div id="top-news-slider" class="owl-carousel ">
+                                    {% for breaking in breakings %}
+                                    <div class="item">
+                                        <a href="#"> <img src="{{breaking.image.url}}" alt="news image"> <span> {{breaking.text}} </span></a>
+                                    </div>
+                                    {% endfor %}
+                               </div>
+                           </div>
+                        </div>
+                    </div>  
+                    <!-- End News Slider -->              
+                </div>
+            </div>            
+               
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 padding-0">
+                <div class="slider-area">
+                    <div class="bend niceties preview-2">
+                        <div id="ensign-nivoslider" class="slides">
+                            <img src="{{trend_politics_news.image.url}}" alt="" title="#slider-direction-1" />
+                            <img src="{{trend_business_news.image.url}}" alt="" title="#slider-direction-2" />
+                            <img src="{{trend_arts_news.image.url}}" alt="" title="#slider-direction-3" />
+                            <img src="{{trend_sports_news.image.url}}"alt="" title="#slider-direction-4" />
+                       
+                        </div>
+                        <!-- direction 2 -->
+                        <div id="slider-direction-1" class="slider-direction">
+                            <div class="slider-content t-cn s-tb slider-1">
+                                <div class="title-container s-tb-c">
+                                    <div class="slider-botton">
+                                        <ul>
+                                            <li>
+                                                <a class="cat-link" href="#">POLITICS</a> 
+                                                <span class="date"> 
+                                                    <i class="fa fa-calendar-check-o" aria-hidden="true"></i>{{trend_politics_news.pub_date}}
+                                                </span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <h1 class="title1"><a href="{% url 'trending:trendnews_detail' trend_politics_news.slug %}"><span>{{trend_politics_news.title}}</span></a></h1>
+                                    <div class="title2">{{trend_politics_news.short_txt}}</div>
+                                </div>
+                            </div>
+                        </div>
+                         <!-- direction 2 -->
+                         <div id="slider-direction-2" class="slider-direction">
+                            <div class="slider-content t-cn s-tb slider-2">
+                                <div class="title-container s-tb-c">
+                                    <div class="slider-botton">
+                                        <ul>
+                                            <li>
+                                                <a class="cat-link" href="category.html">BUSINESS </a> 
+                                                <span class="date"> 
+                                                    <i class="fa fa-calendar-check-o" aria-hidden="true"></i>{{trend_business_news.pub_date}}
+                                                </span>
+                                            
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <h1 class="title1"><a href="{% url 'trending:trendnews_detail' trend_business_news.slug %}"><span> {{trend_business_news.title}}</span></a></h1>
+                                    <div class="title2">{{trend_business_news.short_txt}}</div>
+                                </div>
+                            </div>
+                        </div> <!-- direction 2 -->
+                        <div id="slider-direction-3" class="slider-direction">
+                            <div class="slider-content t-cn s-tb slider-3">
+                                <div class="title-container s-tb-c">
+                                    <div class="slider-botton">
+                                        <ul>
+                                            <li>
+                                                <a class="cat-link" href="category.html"> SPORTS</a> 
+                                                <span class="date"> 
+                                                    <i class="fa fa-calendar-check-o" aria-hidden="true"></i>{{trend_sports_news.pub_date}}
+                                                </span>
+            
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <h1 class="title1"><a href="{% url 'trending:trendnews_detail' trend_sports_news.slug %}"><span>{{trend_sports_news.title}}</span></a></h1>
+                                    <div class="title2">{{trend_sports_news.short_txt}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- direction 2 -->
+                        <div id="slider-direction-4" class="slider-direction">
+                            <div class="slider-content t-cn s-tb slider-4">
+                                <div class="title-container s-tb-c">
+                                    <div class="slider-botton">
+                                        <ul>
+                                            <li>
+                                                <a class="cat-link" href="category-world.html"> ARTS </a> 
+                                                <span class="date"> 
+                                                    <i class="fa fa-calendar-check-o" aria-hidden="true"></i> {{trend_arts_news.pub_date}}
+                                                </span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <h1 class="title1"><a href="{% url 'trending:trendnews_detail' trend_arts_news.slug %}"><span> {{trend_arts_news.title}}</span></a></h1>
+                                    <div class="title2">{{trend_arts_news.short_txt}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slider Area End Here-->
+
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 paddimg-left-none">
+                <div class="slider-right">
+                    <ul>
+                        <li>
+                            <div class="right-content">
+                                <span class="category"><a class="cat-link" href="blog.html">LIFESTYLE</a></span> 
+                                <span class="date"><i class="fa fa-calendar-check-o" aria-hidden="true"> </i> {{trend_lifestyle_news.pub_date}}</span>
+                                <h3><a href="{% url 'trending:trendnews_detail' trend_lifestyle_news.slug %} ">{{trend_lifestyle_news.short_txt}}</a></h3>
+                            </div>
+                            {% if trend_lifestyle_news.image %}
+                            <div class="right-image"><a href="{% url 'trending:trendnews_detail' trend_lifestyle_news.slug %} "><img src="{{trend_lifestyle_news.image.url}}" alt="sidebar image" height="184"></a></div>
+                            {% endif %} 
+                        </li>
+                        <li>
+                            <div class="right-content">
+                                <span class="category"><a class="cat-link" href="blog.html">Health</a></span> 
+                                <span class="date"><i class="fa fa-calendar-check-o" aria-hidden="true"> </i> {{trend_health_news.pub_date}}</span>
+                                <h3><a href="{% url 'trending:trendnews_detail' trend_health_news.slug %}">{{trend_health_news.short_txt}}</a></h3>
+                            </div>
+                            {% if trend_health_news.image %}
+                            <div class="right-image"><a href=""><img src="{{trend_health_news.image.url}}" alt="sidebar image" height="184"></a></div>
+                            {% endif %} 
+                        </li>
+                        <li>
+                            <div class="right-content">
+                                <span class="category"><a class="cat-link" href="blog.html">Scitech</a></span> 
+                                <span class="date"><i class="fa fa-calendar-check-o" aria-hidden="true"> </i> {{trend_scitech_news.pub_date}}</span>
+                                <h3><a href="{% url 'trending:trendnews_detail' trend_scitech_news.slug %}">{{trend_scitech_news.short_txt}}</a></h3>
+                            </div>
+                            {% if trend_scitech_news.image %}
+                            <div class="right-image"><a href="{% url 'trending:trendnews_detail' trend_scitech_news.slug %}"><img src="{{trend_scitech_news.image.url}}" alt="sidebar image" height="184"></a></div>
+                            {% endif %} 
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slider Section end Here -->
+
+
+    <!-- Fetuered videos Start Here -->
+        
+    <div class="fetuered-videos">
+        <div class="container">
+            <div class="row">
+                <div class="view-area">
+                    <div class="col-sm-12"> 
+                        <h3 class="title-bg">Fetuered Videos</h3>
+                    </div>
+                </div>
+            </div>
+            <div id="featured-videos-section" class="owl-carousel">
+                <div class="item">
+                    <div class="single-videos">
+                        <div class="images">
+                            <a href="#"><img src="{% static 'images/fetuered/1.jpg' %}" alt=""></a>
+                            <div class="overley">
+                                <div class="videos-icon">
+                                    <a class="popup-videos" href="http://www.youtube.com/watch?v=Cdajfy4voyY"><img src="images/fetuered/video-icon.png" alt=""></a>                           
+                                </div>
+                            </div>
+                        </div>                            
+                        <div class="videos-text">
+                            <h3><a href="#">Smart Packs Parking Sensor Tech</a></h3>
+                            <span class="date"> <i class="fa fa-calendar-check-o" aria-hidden="true"></i> November 28, 2017 </span>
+                            <span class="comment"><a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i> 50 </a></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="single-videos">
+                        <div class="images">
+                            <a href="#"><img src="{% static 'images/fetuered/2.jpg' %}" alt=""></a>
+                            <div class="overley">
+                                <div class="videos-icon">
+                                    <a class="popup-videos" href="http://www.youtube.com/watch?v=Cdajfy4voyY"><img src="images/fetuered/video-icon.png" alt=""></a>                      
+                                </div>
+                            </div>
+                        </div>                            
+                        <div class="videos-text">
+                            <h3><a href="#">Woman Endure Five Year Slvery</a></h3>
+                            <span class="date"> <i class="fa fa-calendar-check-o" aria-hidden="true"></i> November 28, 2017 </span><span class="comment"><a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i> 50 </a></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="single-videos">
+                        <div class="images">
+                            <a href="#"><img src="{% static 'images/fetuered/3.jpg' %}" alt=""></a>
+                            <div class="overley">
+                                <div class="videos-icon">
+                                    <a class="popup-videos" href="http://www.youtube.com/watch?v=Cdajfy4voyY"><img src="images/fetuered/video-icon.png" alt=""></a>                      
+                                </div>
+                            </div>
+                        </div>                            
+                        <div class="videos-text">
+                            <h3><a href="#">Health Benefits of Morning Running</a></h3>
+                            <span class="date"> <i class="fa fa-calendar-check-o" aria-hidden="true"></i> November 28, 2017 </span><span class="comment"><a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i> 50 </a></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="single-videos">
+                        <div class="images">
+                            <a href="#"><img src="{% static 'images/fetuered/4.jpg' %}" alt=""></a>
+                            <div class="overley">
+                                <div class="videos-icon">
+                                    <a class="popup-videos" href="http://www.youtube.com/watch?v=Cdajfy4voyY"><img src="images/fetuered/video-icon.png" alt=""></a>                  
+                                </div>
+                            </div>
+                        </div>                            
+                        <div class="videos-text">
+                            <h3><a href="#">Smart Packs Parking Sensor Tech</a></h3>
+                            <span class="date"> <i class="fa fa-calendar-check-o" aria-hidden="true"></i> November 28, 2017 </span><span class="comment"><a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i> 50 </a></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="single-videos">
+                        <div class="images">
+                            <a href="#"><img src="{% static 'images/fetuered/5.jpg' %}" alt=""></a>
+                            <div class="overley">
+                                <div class="videos-icon">
+                                    <a class="popup-videos" href="http://www.youtube.com/watch?v=Cdajfy4voyY"><img src="images/fetuered/video-icon.png" alt=""></a>                  
+                                </div>
+                            </div>
+                        </div>                            
+                        <div class="videos-text">
+                            <h3><a href="#">Smart Packs Parking Sensor Tech</a></h3>
+                            <span class="date"> <i class="fa fa-calendar-check-o" aria-hidden="true"></i> November 28, 2017 </span><span class="comment"><a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i> 50 </a></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="single-videos">
+                        <div class="images">
+                            <a href="#"><img src="{%  static 'images/fetuered/2.jpg' %}" alt=""></a>
+                            <div class="overley">
+                                <div class="videos-icon">
+                                    <a class="popup-videos" href="http://www.youtube.com/watch?v=Cdajfy4voyY"><img src="images/fetuered/video-icon.png" alt=""></a>                  
+                                </div>
+                            </div>
+                        </div>                            
+                        <div class="videos-text">
+                            <h3><a href="#">Smart Packs Parking Sensor Tech</a></h3>
+                            <span class="date"> <i class="fa fa-calendar-check-o" aria-hidden="true"></i> November 28, 2017 </span><span class="comment"><a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i> 50 </a></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>    
+    </div>
+
+<!-- Fetuered videos End Here -->
+
+     <!-- Hot News Start Here -->
+     <div class="hot-news">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-8 col-sm-8 col-xs-12">
+                    <!--Around Area Start Here -->
+                        <div class="view-area separator-large3">
+                                <div class="row">
+                                    <div class="col-sm-8"> 
+                                        <h3 class="title-bg">Politics</h3>
+                                    </div>
+                                    <div class="col-sm-4 text-right">
+                                        <a href="{% url 'categories:politics' %}">View More <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                                    </div>
+                            </div>
+                        </div> 
+                        <ul class="news-post news-post2 around-news">
+                        <li>
+                            <div class="row">                                
+                                {% for politics_cat in politics_news %}
+                                {% for news in politics_cat.categories.all|slice:"4" %}
+                        
+                                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 content">
+                                    <div class="item-post">
+                                        <div class="blog-image">
+                                            {% if news.image %}
+                                            <a href="{% url 'news:news_detail' news.slug %}"><img src="{{news.image.url}}" alt="" title="News image" /></a>
+                                            {% endif %} 
+                                        </div>
+                                        <div class="content">
+                                           <span class="date">
+                                                <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+                                                {{news.pub_date}}
+                                            </span>
+                                            
+                                            <h4><a href="{% url 'news:news_detail' news.slug %}"> {{news.short_txt}}
+                                            </a></h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                                {% endfor %}
+                                
+                               
+                            </div>
+                        </li>
+                    </ul>                   
+                
+
+
+
+                    <div class="view-area separator-large3">
+                        <div class="row">
+                            <div class="col-sm-8"> 
+                                <h3 class="title-bg">Business</h3>
+                            </div>
+                            <div class="col-sm-4 text-right">
+                                <a href="{% url 'categories:business' %}">View More <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                            </div>
+                    </div>
+                </div> 
+                <ul class="news-post news-post2 around-news">
+                <li>
+                    <div class="row">
+                       
+                        {% for business_cat in business_news %}
+                        {% for news in business_cat.categories.all|slice:"4" %}
+                
+                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 content">
+                            <div class="item-post">
+                                <div class="blog-image">
+                                    {% if news.image %}
+                                    <a href="{% url 'news:news_detail' news.slug %}"><img src="{{news.image.url}}" alt="" title="News image" /></a>
+                                    {% endif %} 
+                                </div>
+                                <div class="content">
+                                   <span class="date">
+                                        <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+                                        {{news.pub_date}}
+                                    </span>
+                                    <h4><a href="{% url 'news:news_detail' news.slug %}"> {{news.short_txt}}
+                                    </a></h4>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        {% endfor %}
+
+                    </div>
+                </li>
+            </ul>                   
+            <div class="view-area separator-large3">
+                <div class="row">
+                    <div class="col-sm-8"> 
+                        <h3 class="title-bg">Sports</h3>
+                    </div>
+                    <div class="col-sm-4 text-right">
+                        <a href="{% url 'categories:sports' %}">View More <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                    </div>
+            </div>
+        </div> 
+
+
+        <ul class="news-post news-post2 around-news">
+            <li>
+                <div class="row">
+                    {% for sport_cat in sports_news %}
+                        {% for news in sport_cat.categories.all|slice:"4" %}
+                        
+                                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 content">
+                                    <div class="item-post">
+                                        <div class="blog-image">
+                                            {% if news.image %}
+                                            <a href="{% url 'news:news_detail' news.slug %}"><img src="{{news.image.url}}" alt="" title="News image" /></a>
+                                            {% endif %} 
+                                        </div>
+                                        <div class="content">
+                                           <span class="date">
+                                                <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+                                                {{news.pub_date}}
+                                            </span>
+                                            <h4><a href="{% url 'news:news_detail' news.slug %}"> {{news.short_txt}}
+                                            </a></h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                                {% endfor %}
+                        
+                </div>
+            </li>
+       </ul>                   
+
+        <div class="view-area separator-large3">
+            <div class="row">
+                <div class="col-sm-8"> 
+                    <h3 class="title-bg">Arts</h3>
+                </div>
+                <div class="col-sm-4 text-right">
+                    <a href="{% url 'categories:arts' %}">View More <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                </div>
+        </div>
+    </div> 
+        <ul class="news-post news-post2 around-news">
+        <li>
+            <div class="row">
+                
+                {% for arts_cat in arts_news %}
+                {% for news in arts_cat.categories.all|slice:"4" %}
+        
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 content">
+                    <div class="item-post">
+                        <div class="blog-image">
+                            {% if news.image %}
+                            <a href="{% url 'news:news_detail' news.slug %}"><img src="{{news.image.url}}" alt="" title="News image" /></a>
+                            {% endif %} 
+                        </div>
+                        <div class="content">
+                           <span class="date">
+                                <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+                                {{news.pub_date}}
+                            </span>
+                            <h4><a href="{% url 'news:news_detail' news.slug %}"> {{news.short_txt}}
+                            </a></h4>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                {% endfor %}
+                
+            </div>
+        </li>
+        </ul>                   
+    <div class="view-area separator-large3">
+        <div class="row">
+            <div class="col-sm-8"> 
+                <h3 class="title-bg">Lifestyle</h3>
+            </div>
+            <div class="col-sm-4 text-right">
+                <a href="{% url 'categories:lifestyle' %}">View More <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+            </div>
+    </div>
+</div> 
+    <ul class="news-post news-post2 around-news">
+    <li>
+    <div class="row">
+        
+        {% for lifestyle_cat in lifestyle_news %}
+        {% for news in lifestyle_cat.categories.all|slice:"4" %}
+
+        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 content">
+            <div class="item-post">
+                <div class="blog-image">
+                    {% if news.image %}
+                    <a href="{% url 'news:news_detail' news.slug %}"><img src="{{news.image.url}}" alt="" title="News image" /></a>
+                    {% endif %} 
+                </div>
+                <div class="content">
+                   <span class="date">
+                        <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+                        {{news.pub_date}}
+                    </span>
+                    <h4><a href="{% url 'news:news_detail' news.slug %}"> {{news.short_txt}}
+                    </a></h4>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        {% endfor %}
+       
+        
+    </div>
+    </li>
+</ul>                   
+<div class="view-area separator-large3">
+    <div class="row">
+        <div class="col-sm-8"> 
+            <h3 class="title-bg">Scitech</h3>
+        </div>
+        <div class="col-sm-4 text-right">
+            <a href="{% url 'categories:scitech' %}">View More <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+        </div>
+</div>
+</div> 
+
+<ul class="news-post news-post2 around-news">
+<li>
+    <div class="row">
+        
+        {% for scitech_cat in scitech_news %}
+        {% for news in scitech_cat.categories.all|slice:"4" %}
+
+        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 content">
+            <div class="item-post">
+                <div class="blog-image">
+                    {% if news.image %}
+                    <a href="{% url 'news:news_detail' news.slug %}"><img src="{{news.image.url}}" alt="" title="News image" /></a>
+                    {% endif %} 
+                </div>
+                <div class="content">
+                   <span class="date">
+                        <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+                        {{news.pub_date}}
+                    </span>
+                    <h4><a href="{% url 'news:news_detail' news.slug %}"> {{news.short_txt}}
+                    </a></h4>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        {% endfor %}
+       
+        
+    </div>
+</li>
+</ul>  
+
+
+
+<div class="view-area separator-large3">
+    <div class="row">
+        <div class="col-sm-8"> 
+            <h3 class="title-bg">Health</h3>
+        </div>
+        <div class="col-sm-4 text-right">
+            <a href="{% url 'categories:health' %}">View More <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+        </div>
+</div>
+</div> 
+<ul class="news-post news-post2 around-news">
+<li>
+<div class="row">                                
+    {% for health_cat in health_news %}
+    {% for news in health_cat.categories.all|slice:"4" %}
+
+    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 content">
+        <div class="item-post">
+            <div class="blog-image">
+                {% if news.image %}
+                <a href="{% url 'news:news_detail' news.slug %}"><img src="{{news.image.url}}" alt="" title="News image" /></a>
+                {% endif %} 
+            </div>
+            <div class="content">
+               <span class="date">
+                    <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+                    {{news.pub_date}}
+                </span>
+                <h4><a href="{% url 'news:news_detail' news.slug %}"> {{news.short_txt}}
+                </a></h4>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% endfor %}
+    
+   
+</div>
+</li>
+</ul>          
+ </div>
+ </div>
+ </div>
+</div>
+    
+{% endblock %}
+

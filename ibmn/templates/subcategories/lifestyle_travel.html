@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% load static i18n %}
+
+
+{% block content %}
+
+
+     <!-- Hot News Start Here -->
+     <div class="hot-news">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-8 col-sm-8 col-xs-12">
+                    <!--Around Area Start Here -->
+                        <div class="view-area separator-large3">
+                                <div class="row">
+                                    <div class="col-sm-8"> 
+                                        <h3 class="title-bg"> Travel</h3>
+                                    </div>
+                            </div>
+                        </div> 
+                        <ul class="news-post news-post2 around-news">
+                        <li>
+                            <div class="row">
+                                {% for global_subs in travel_sub  %}
+                                {% for news in global_subs.categories.all %}
+                                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 content">
+                                    <div class="item-post">
+                                        <div class="blog-image">
+                                            {% if news.image %}
+                                            <a href="{% url 'news:news_detail' news.slug %}"><img src="{{news.image.url}}" alt="" title="News image" /></a>
+                                            {% endif %} 
+                                        </div>
+                                        <div class="content">
+                                            <span class="date">
+                                                <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+                                                {{news.pub_date}}
+                                            </span>
+                                            
+                                            <h4><a href="{% url 'news:news_detail' news.slug %}">{{news.short_txt}}</a></h4>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {% endfor %}
+
+                                {% endfor %}
+
+                         </div>
+                        </li>
+                    </ul>                   
+                
+                   
+                </div> 
+                               
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- All News Section end Here -->
+
+
+
+
+{% endblock %}
