@@ -2513,7 +2513,7 @@ span.cat i {
   text-transform: capitalize;
 }
 .testimonial-page-area .container li .testimonial-content p:before {
-  background: url(image/comma-icon.png);
+  background: url();
   position: absolute;
   content: "";
   top: 7px;
