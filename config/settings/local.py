@@ -12,7 +12,7 @@ SECRET_KEY = env(
     default="MiR0zU2gnVVglE5O2x3SDDBUi51hiLCbJkKMHRYzgwlWIaJBgo9FEhwm4qn31kCm",
 )
 # https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = ["localhost", "0.0.0.0", "127.0.0.1" ,"*" "ibmnappstage.herokuapp.com"]
+ALLOWED_HOSTS = ['ibmnappstage.herokuapp.com']
 
 # CACHES
 # ------------------------------------------------------------------------------
