@@ -78,7 +78,8 @@ THIRD_PARTY_APPS = [
     "mptt",
     "ckeditor",
     "ckeditor_uploader",
-    "hitcount"
+    "hitcount",
+    "cloudinary"
     
 ]
 
@@ -170,18 +171,19 @@ STATICFILES_FINDERS = [
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 # MEDIA
 # ------------------------------------------------------------------------------
-#CLOUDINARY_STORAGE = {
- #   'CLOUD_NAME': <your cloud name>,
-  #  'API_KEY': <your api key>,
-   # 'API_SECRET': <your secret api>,
-#}
+CLOUDINARY_STORAGE = {
+   'CLOUD_NAME': 'dv43itq5e',
+   'API_KEY': '335848622837943',
+   'API_SECRET': 'D2Jbl9MDwUyaLlUX0JigW-4lBjw',
+  
+  }
 
-#DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # https://docs.djangoproject.com/en/dev/ref/settings/#media-root
-MEDIA_ROOT = str(APPS_DIR / "media")
+#MEDIA_ROOT = str(APPS_DIR / "media")
 # https://docs.djangoproject.com/en/dev/ref/settings/#media-url
-MEDIA_URL = "/media/"
+#MEDIA_URL = "/media/"
 
 # TEMPLATES
 # ------------------------------------------------------------------------------
