@@ -59,7 +59,16 @@ def home_view(request):
     return render(request, 'pages/home.html', context)
 
 
+class SearchResultsList(ListView):
+    model = News
+    context_object_name = "quotes"
+    template_name = "search.html"
 
+    def get_queryset(self):
+        query = self.request.GET.get("q")
+        return News.objects.filter(
+            Q(name__icontains=query) | Q(quote__icontains=query)
+        )
 
 
 def news_details_view(request, slug):
