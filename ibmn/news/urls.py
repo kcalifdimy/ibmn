@@ -4,7 +4,8 @@ from django.conf.urls import url
 
 from ibmn.news.views import (
                             home_view , manager_home_view, news_create_view,  manager_list_post_view, 
-                             manager_update_view, manager_delete_view, news_details_view, reply_page
+                             manager_update_view, manager_delete_view, news_details_view, reply_page,
+                             search_list_news_view
                             )
 
 
@@ -18,6 +19,7 @@ urlpatterns = [
     path('delete/<uuid:uuid>/', view=manager_delete_view, name='manager_delete_news'),
     path("<slug:slug>/", view=news_details_view, name="news_detail"),
     path('comment/reply/', reply_page, name="reply"),
+    path('list/', view=search_list_news_view, name='search'),
 
 
 ]

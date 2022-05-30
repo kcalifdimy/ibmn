@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.utils import timezone
 from django.views import View
 from django.shortcuts import render, redirect, get_object_or_404, reverse
+from django.contrib.postgres.search import SearchVectorField  
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView , DetailView, UpdateView, TemplateView, DeleteView
 from ibmn.categories.models.categories import Category
@@ -61,15 +62,14 @@ def home_view(request):
 
 class SearchResultsList(ListView):
     model = News
-    context_object_name = "quotes"
+    context_object_name = "news"
     template_name = "search.html"
 
     def get_queryset(self):
         query = self.request.GET.get("q")
-        return News.objects.filter(
-            Q(name__icontains=query) | Q(quote__icontains=query)
-        )
+        return News.objects.filter(search_vector=query)
 
+search_list_news_view  = SearchResultsList.as_view()
 
 def news_details_view(request, slug):
     news=get_object_or_404(News,slug=slug)
