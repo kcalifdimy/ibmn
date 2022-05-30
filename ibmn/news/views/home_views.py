@@ -8,7 +8,7 @@ from django.contrib.postgres.search import SearchVectorField
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView , DetailView, UpdateView, TemplateView, DeleteView
 from ibmn.categories.models.categories import Category
-from ibmn.news.models import News
+from ibmn.news.models import News, Videos
 from ibmn.categories.models import Subcategory
 from ibmn.breaking.models import Breaking
 from ibmn.comments.forms import CommentForm
@@ -23,6 +23,9 @@ from ibmn.trending.models import Trending
 def home_view(request):
 
     breakings = Breaking.objects.all()[:5]
+
+    videos = Videos.objects.all()[:8]
+
 
     trend_business_news = Trending.objects.filter(category_name__name='BUSINESS')   
     trend_politics_news = Trending.objects.filter(category_name__name='POLITICS')
@@ -54,7 +57,7 @@ def home_view(request):
                 'trend_health_news':trend_health_news.first(), 'trend_lifestyle_news':trend_lifestyle_news.first(),
                 'politics_news': politics_news, 'business_news' : business_news, 'sports_news':sports_news,
                 'fashion_news': fashion_news, 'arts': arts_news, 'scitech_news':scitech_news, 'health_news':health_news,
-                'lifestyle_news': lifestyle_news ,  'breakings':breakings 
+                'lifestyle_news': lifestyle_news ,  'breakings':breakings, 'videos':videos
               }
 
     return render(request, 'pages/home.html', context)

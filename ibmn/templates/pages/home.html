@@ -2,6 +2,9 @@
 
 {% load static i18n %}
 
+{% load embed_video_tags  %}
+
+
 
 {% block content %}
 
@@ -176,103 +179,14 @@
                 </div>
             </div>
             <div id="featured-videos-section" class="owl-carousel">
+
+                  {% for items in videos %}
                 <div class="item">
                     <div class="single-videos">
-                        <div class="images">
-                            <a href="#"><img src="{% static 'images/fetuered/1.jpg' %}" alt=""></a>
-                            <div class="overley">
-                                <div class="videos-icon">
-                                    <a class="popup-videos" href="http://www.youtube.com/watch?v=Cdajfy4voyY"><img src="images/fetuered/video-icon.png" alt=""></a>                           
-                                </div>
-                            </div>
-                        </div>                            
-                        <div class="videos-text">
-                            <h3><a href="#">Smart Packs Parking Sensor Tech</a></h3>
-                            <span class="date"> <i class="fa fa-calendar-check-o" aria-hidden="true"></i> November 28, 2017 </span>
-                            <span class="comment"><a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i> 50 </a></span>
-                        </div>
+                            {% video items.video_url '426x240' %}
                     </div>
                 </div>
-                <div class="item">
-                    <div class="single-videos">
-                        <div class="images">
-                            <a href="#"><img src="{% static 'images/fetuered/2.jpg' %}" alt=""></a>
-                            <div class="overley">
-                                <div class="videos-icon">
-                                    <a class="popup-videos" href="http://www.youtube.com/watch?v=Cdajfy4voyY"><img src="images/fetuered/video-icon.png" alt=""></a>                      
-                                </div>
-                            </div>
-                        </div>                            
-                        <div class="videos-text">
-                            <h3><a href="#">Woman Endure Five Year Slvery</a></h3>
-                            <span class="date"> <i class="fa fa-calendar-check-o" aria-hidden="true"></i> November 28, 2017 </span><span class="comment"><a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i> 50 </a></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="single-videos">
-                        <div class="images">
-                            <a href="#"><img src="{% static 'images/fetuered/3.jpg' %}" alt=""></a>
-                            <div class="overley">
-                                <div class="videos-icon">
-                                    <a class="popup-videos" href="http://www.youtube.com/watch?v=Cdajfy4voyY"><img src="images/fetuered/video-icon.png" alt=""></a>                      
-                                </div>
-                            </div>
-                        </div>                            
-                        <div class="videos-text">
-                            <h3><a href="#">Health Benefits of Morning Running</a></h3>
-                            <span class="date"> <i class="fa fa-calendar-check-o" aria-hidden="true"></i> November 28, 2017 </span><span class="comment"><a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i> 50 </a></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="single-videos">
-                        <div class="images">
-                            <a href="#"><img src="{% static 'images/fetuered/4.jpg' %}" alt=""></a>
-                            <div class="overley">
-                                <div class="videos-icon">
-                                    <a class="popup-videos" href="http://www.youtube.com/watch?v=Cdajfy4voyY"><img src="images/fetuered/video-icon.png" alt=""></a>                  
-                                </div>
-                            </div>
-                        </div>                            
-                        <div class="videos-text">
-                            <h3><a href="#">Smart Packs Parking Sensor Tech</a></h3>
-                            <span class="date"> <i class="fa fa-calendar-check-o" aria-hidden="true"></i> November 28, 2017 </span><span class="comment"><a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i> 50 </a></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="single-videos">
-                        <div class="images">
-                            <a href="#"><img src="{% static 'images/fetuered/5.jpg' %}" alt=""></a>
-                            <div class="overley">
-                                <div class="videos-icon">
-                                    <a class="popup-videos" href="http://www.youtube.com/watch?v=Cdajfy4voyY"><img src="images/fetuered/video-icon.png" alt=""></a>                  
-                                </div>
-                            </div>
-                        </div>                            
-                        <div class="videos-text">
-                            <h3><a href="#">Smart Packs Parking Sensor Tech</a></h3>
-                            <span class="date"> <i class="fa fa-calendar-check-o" aria-hidden="true"></i> November 28, 2017 </span><span class="comment"><a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i> 50 </a></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="single-videos">
-                        <div class="images">
-                            <a href="#"><img src="{%  static 'images/fetuered/2.jpg' %}" alt=""></a>
-                            <div class="overley">
-                                <div class="videos-icon">
-                                    <a class="popup-videos" href="http://www.youtube.com/watch?v=Cdajfy4voyY"><img src="images/fetuered/video-icon.png" alt=""></a>                  
-                                </div>
-                            </div>
-                        </div>                            
-                        <div class="videos-text">
-                            <h3><a href="#">Smart Packs Parking Sensor Tech</a></h3>
-                            <span class="date"> <i class="fa fa-calendar-check-o" aria-hidden="true"></i> November 28, 2017 </span><span class="comment"><a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i> 50 </a></span>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>    
     </div>
