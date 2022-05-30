@@ -1,12 +1,14 @@
 from django.contrib import admin
-from ibmn.news.models import News
+from ibmn.news.models import News, Videos
 
 
 
-admin.site.register(News)
 
 # Register your models here.
 
+
+admin.site.register(News)
+admin.site.register(Videos)
 
 
 
