@@ -35,3 +35,5 @@ django-coverage-plugin==2.0.2  # https://github.com/nedbat/django_coverage_plugi
 pytest-django==4.5.2  # https://github.com/pytest-dev/pytest-django
 django-storages[boto3]==1.12.3  # https://github.com/jschneier/django-storages
 django-anymail[mailgun]==8.5  # https://github.com/anymail/django-anymail
+cloudinary
+dj3-cloudinary-storage

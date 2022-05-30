@@ -4,7 +4,7 @@ from datetime import datetime
 from django.db import models
 #Create your models here.
 
-class Bignews(models.Model):
+class Videos(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     title = models.CharField(null=True,  blank = True, max_length=100 )
     pub_date =  models.DateTimeField(null=True,)
