@@ -18,3 +18,4 @@ django-mptt
 django-ckeditor
 django-imagekit
 django-hitcount
+django-embed-video
