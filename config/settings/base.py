@@ -81,7 +81,8 @@ THIRD_PARTY_APPS = [
     "ckeditor_uploader",
     "hitcount",
     "cloudinary",
-    "embed_video"
+    "embed_video",
+    "taggit"
     
 ]
 

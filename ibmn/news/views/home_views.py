@@ -80,7 +80,6 @@ def news_details_view(request, slug):
     # List of active comments for this post
     comments = news.comments.filter(active=True)
     new_comment = None
-    print('come')
     if request.method == 'POST':
         # A comment was posted
         comment_form = CommentForm(data=request.POST)
