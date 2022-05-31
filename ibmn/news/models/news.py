@@ -6,6 +6,7 @@ from django.core.validators import MinLengthValidator
 from django.urls import reverse
 from django.template.defaultfilters import slugify 
 from django.conf import settings
+from taggit.managers import TaggableManager
 from hitcount.models import HitCountMixin, HitCount
 from imagekit.models import ProcessedImageField
 from imagekit.processors import ResizeToFill
@@ -29,8 +30,9 @@ class News(models.Model, HitCountMixin):
                                            format='JPEG',
                                            options={'quality': 60})         
     category = models.ForeignKey('categories.Subcategory', on_delete=models.CASCADE, related_name='categories', null=True, blank=True)
+    tags = TaggableManager()
     hit_count_generic = GenericRelation(HitCount, object_id_field = 'object_pk', related_query_name='hit_count_generic_relation')
-
+    
 
 
     class Meta:
