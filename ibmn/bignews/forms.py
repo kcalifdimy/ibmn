@@ -48,7 +48,7 @@ class EditBigNewsForm(forms.ModelForm):
     #timestamp = forms.DateField(widget=forms.DateInput(attrs={'type':'date', 'class':'form-control'}))
     image = forms.ImageField(widget=forms.FileInput(attrs={'id':'formFile','type':'file', 'class':'control'}))
     slug = forms.SlugField(widget=forms.TextInput(attrs={"class": "form-control", 'type':'text'}))
-    pub_date = forms.DateField(widget=forms.DateInput(attrs={'type':'date', 'class':'form-control'}))
+    #pub_date = forms.DateField(widget=forms.DateInput(attrs={'type':'date', 'class':'form-control'}))
     category_name = forms.ModelChoiceField(queryset=Category.objects.all())
     body_txt =forms.CharField(widget=CKEditorUploadingWidget(attrs={'class':'form-control', 'rows':'5', 'cols':'50','data-constraints':'@Required'}))
     
