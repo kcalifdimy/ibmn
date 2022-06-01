@@ -61,7 +61,7 @@ class EditBigNewsForm(forms.ModelForm):
                     "title",
                     "short_txt",
                     "slug",
-                    "pub_date",
+                    #"pub_date",
                     "image",
                     "category_name",
                     "body_txt",
