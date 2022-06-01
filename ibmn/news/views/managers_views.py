@@ -29,6 +29,8 @@ class NewsCreateView(View):
         form = self.form_class(request.POST, request.FILES)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Your news was successfully posted!')
+
         return render(request,self.template_name, {'form':form})
 
 news_create_view   = NewsCreateView.as_view()

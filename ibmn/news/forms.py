@@ -32,6 +32,7 @@ class CreateNewsForm(forms.ModelForm):
                     #"pub_date",
                     "image",
                     "category",
+                    "tags"
                     ]
 
   
