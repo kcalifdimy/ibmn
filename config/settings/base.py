@@ -179,7 +179,7 @@ CLOUDINARY_STORAGE = {
   'API_SECRET': 'D2Jbl9MDwUyaLlUX0JigW-4lBjw',
   
   }
-
+  
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # https://docs.djangoproject.com/en/dev/ref/settings/#media-root
