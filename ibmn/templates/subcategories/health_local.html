@@ -18,32 +18,38 @@
                         <div class="view-area separator-large3">
                                 <div class="row">
                                     <div class="col-sm-8"> 
-                                        <h3 class="title-bg"> Global</h3>
+                                        <h3 class="title-bg"> Local</h3>
                                     </div>
                             </div>
                         </div> 
                         <ul class="news-post news-post2 around-news">
                         <li>
                             <div class="row">
+                                {% for global_subs in local_sub  %}
+                                {% for news in global_subs.categories.all %}
                                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 content">
                                     <div class="item-post">
                                         <div class="blog-image">
-                                            <a href="blog-single.html"><img src="images/world/6.jpg" alt="" title="News image" /></a>
+                                            {% if news.image %}
+                                            <a href="{% url 'news:news_detail' news.slug %}"><img src="{{news.image.url}}" alt="" title="News image" /></a>
+                                            {% endif %} 
                                         </div>
                                         <div class="content">
                                             <span class="date">
                                                 <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
-                                                November 28, 2017 
+                                                {{news.pub_date}}
                                             </span>
-                                            <span class="comment">
-                                                <a href="#"> <i class="fa fa-comment-o" aria-hidden="true"></i> 50
-                                                </a>
-                                            </span>
-                                            <h4><a href="{% url 'news:news_detail' news.slug %}">Clinton campaign jilted as FBI to search emails</a></h4>
+                                            
+                                            <h4><a href="{% url 'news:news_detail' news.slug %}">{{news.short_txt|truncatechars:60}}</a></h4>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+
+                                {% endfor %}
+
+                                {% endfor %}
+
+                         </div>
                         </li>
                     </ul>                   
                 

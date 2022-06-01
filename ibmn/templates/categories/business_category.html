@@ -142,7 +142,7 @@
                                                 <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
                                                 {{news.pub_date}}
                                             </span>
-                                            <h4><a href="{% url 'news:news_detail' news.slug %}">{{news.short_txt}}</a></h4>
+                                            <h4><a href="{% url 'news:news_detail' news.slug %}">{{news.short_txt|truncatechars:60}}</a></h4>
                                         </div>
                                     </div>
                                 </div>
@@ -186,7 +186,7 @@
                                             <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
                                             {{news.pub_date}}
                                         </span>
-                                        <h4><a href="{% url 'news:news_detail' news.slug %}">{{news.short_txt}}</a></h4>
+                                        <h4><a href="{% url 'news:news_detail' news.slug %}">{{news.short_txt|truncatechars:60}}</a></h4>
                                     </div>
                                 </div>
                             </div>
@@ -228,7 +228,7 @@
                                     <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
                                     {{news.pub_date}}
                                 </span>
-                                <h4><a href="{% url 'news:news_detail' news.slug %}">{{news.short_txt}}</a></h4>
+                                <h4><a href="{% url 'news:news_detail' news.slug %}">{{news.short_txt|truncatechars:60}}</a></h4>
                             </div>
                         </div>
                     </div>

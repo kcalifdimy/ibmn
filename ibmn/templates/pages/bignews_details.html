@@ -29,9 +29,9 @@
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <ul class="share-link">
                                 <li class="hvr-bounce-to-right"><a href="#"> Tags:</a></li>
-                                <li class="hvr-bounce-to-right"><a href="#"> Food</a></li>
-                                <li class="hvr-bounce-to-right"><a href="#"> Fashion</a></li>
-                                <li class="hvr-bounce-to-right"><a href="#"> Travel</a></li>
+                                {% for tag in bignews.tags.all|slice:"3" %}
+                                <li class="hvr-bounce-to-right"><a href="#">{{ tag }}</a></li>
+                                {% endfor %}
                             </ul>
                         </div>
                     </div>
@@ -99,76 +99,29 @@
                 <div class="sidebar-area">
                    
                     <div class="recent-post-area hot-news">
-                        <h3 class="title-bg">Recent Post</h3>
+                        <h3 class="title-bg">Related News</h3>
                         <ul class="news-post">
-                            <li>
-                                <div class="row">
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 content">
-                                        <div class="item-post">
-                                            <div class="row">
-                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 paddimg-right-none">
-                                                    <a href="blog-single.html"><img src="images/popular/1.jpg" alt="" title="News image" /></a>
-                                                </div>
-                                                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                                                    <h4><a href="blog-single.html"> US should prepare for<br/> Russian election</a></h4>
-                                                    <span class="date"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> June 28, 2017</span>
-                                                </div>
+                            {% for news in similar_bignews%}
+                            <li> 
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 content">
+                                    <div class="item-post">
+                                        <div class="row">
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 paddimg-right-none">
+                                                {% if news.image %}
+                                                <a href="{% url 'news:news_detail' news.slug %}"><img src="{{news.image.url}}" alt="" title="News image" /></a>
+                                                {% endif %} 
+                                            </div>
+                                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                                <h4><a href="{% url 'news:news_detail' news.slug %}">{{news.short_txt|truncatechars:60}}                                                    </a></h4>
+                                                <span class="date"><i class="fa fa-calendar-check-o" aria-hidden="true"></i>{{news.pub_date}}</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </li>
-                              <li>
-                                <div class="row">
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 content">
-                                        <div class="item-post">
-                                            <div class="row">
-                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 paddimg-right-none">
-                                                    <a href="blog-single.html"><img src="images/popular/2.jpg" alt="" title="News image" /></a>
-                                                </div>
-                                                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                                                    <h4><a href="blog-single.html">Pellentesque Odio Nisi <br/>Euismod In Pharet</a></h4>
-                                                    <span class="date"><i class="fa fa-calendar-check-o" aria-hidden="true"></i>June 28, 2017</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                              <li>
-                                <div class="row">
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 content">
-                                        <div class="item-post">
-                                            <div class="row">
-                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 paddimg-right-none">
-                                                    <a href="blog-single.html"><img src="images/popular/3.jpg" alt="" title="News image" /></a>
-                                                </div>
-                                                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                                                    <h4><a href="blog-single.html"> Erant Aeque Neius No <br/>Numes Electram</a></h4>
-                                                    <span class="date"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> June 28, 2017</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                              <li>
-                                <div class="row">
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 content">
-                                        <div class="item-post">
-                                            <div class="row">
-                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 paddimg-right-none">
-                                                    <a href="blog-single.html"><img src="images/popular/4.jpg" alt="" title="News image" /></a>
-                                                </div>
-                                                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                                                    <h4><a href="blog-single.html">Erant Aeque Neius No <br/>Numes Electram</a></h4>
-                                                    <span class="date"><i class="fa fa-calendar-check-o" aria-hidden="true"></i>June 28, 2017</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
+                            </div>
+                        </li>
+                            {% endfor %}
                         </ul>
                     </div>
                    

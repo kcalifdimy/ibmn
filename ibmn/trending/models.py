@@ -4,6 +4,8 @@ from django.db import models
 from django.urls import reverse
 from django.template.defaultfilters import slugify 
 from django.conf import settings
+from taggit.models import GenericUUIDTaggedItemBase, TaggedItemBase
+from taggit.managers import TaggableManager
 from imagekit.models import ProcessedImageField
 from imagekit.processors import ResizeToFill
 from ckeditor_uploader.fields import  RichTextUploadingField
@@ -13,6 +15,15 @@ from ibmn.categories.models import Category
 
 
 # Create your models here.
+
+class UUIDTaggedItem(GenericUUIDTaggedItemBase, TaggedItemBase):
+    # If you only inherit GenericUUIDTaggedItemBase, you need to define
+    # a tag field. e.g.
+    # tag = models.ForeignKey(Tag, related_name="uuid_tagged_items", on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = ("Tag")
+        verbose_name_plural = ("Tags")
 
 class Trending(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -27,6 +38,7 @@ class Trending(models.Model):
                                            options={'quality': 100})
      
     category_name = models.ForeignKey('categories.Category', on_delete=models.CASCADE, null=True, blank=True)
+    tags = TaggableManager(through=UUIDTaggedItem)
 
 
     def get_absolute_url(self):

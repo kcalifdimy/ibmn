@@ -31,6 +31,7 @@ class CreateTrendForm(forms.ModelForm):
                     #"pub_date",
                     "image",
                     "category_name",
+                    "tags"
                     ]
 
 

@@ -14,6 +14,7 @@ from ibmn.breaking.models import Breaking
 from ibmn.comments.forms import CommentForm
 from ibmn.comments.models import Comment
 from ibmn.trending.models import Trending
+from taggit.models import Tag
 
 
 
@@ -75,8 +76,16 @@ class SearchResultsList(ListView):
 search_list_news_view  = SearchResultsList.as_view()
 
 def news_details_view(request, slug):
+    #tag = get_object_or_404(Tag, slug=tag_slug)
     news=get_object_or_404(News,slug=slug)
 
+    similar_news =  news.tags.similar_objects()[:4]
+    
+    #print(similar_news)
+
+    # List of tags for this post
+    #news_tag = news.tags.all()
+    
     # List of active comments for this post
     comments = news.comments.filter(active=True)
     new_comment = None
@@ -96,7 +105,7 @@ def news_details_view(request, slug):
 
     # List of similar posts
     
-    return render(request, 'pages/news_details.html', {'news':news,'comments': comments,'comment_form':comment_form })
+    return render(request, 'pages/news_details.html', {'news':news,'comments': comments,'comment_form':comment_form, 'similar_news':similar_news })
 
 
 def reply_page(request):

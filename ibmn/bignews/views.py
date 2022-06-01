@@ -94,6 +94,8 @@ bignews_manager_delete_view = BignewsManagerDeleteView.as_view()
 def big_news_details_view(request, slug):
     bignews=get_object_or_404(Bignews,slug=slug)
 
+    similar_bignews =  bignews.tags.similar_objects()[:4]
+
     # List of active comments for this post
     bignews_comments = bignews.bignews_comments.filter(active=True)
     new_comment = None
@@ -113,7 +115,9 @@ def big_news_details_view(request, slug):
 
     # List of similar posts
     
-    return render(request, 'pages/bignews_details.html', {'bignews':bignews,'bignews_comments': bignews_comments,'comment_form':comment_form })
+    return render(request, 'pages/bignews_details.html', {'bignews':bignews,'bignews_comments': bignews_comments,
+                                                            'comment_form':comment_form, 'similar_bignews':similar_bignews
+                                                        })
 
 
 def big_news_reply_page(request):

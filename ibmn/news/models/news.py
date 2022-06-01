@@ -12,8 +12,18 @@ from imagekit.models import ProcessedImageField
 from imagekit.processors import ResizeToFill
 from ckeditor_uploader.fields import  RichTextUploadingField
 from mptt.models import MPTTModel, TreeForeignKey
+from taggit.models import GenericUUIDTaggedItemBase, TaggedItemBase
 from ibmn.categories.models import Subcategory
 
+
+class UUIDTaggedItem(GenericUUIDTaggedItemBase, TaggedItemBase):
+    # If you only inherit GenericUUIDTaggedItemBase, you need to define
+    # a tag field. e.g.
+    # tag = models.ForeignKey(Tag, related_name="uuid_tagged_items", on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = ("Tag")
+        verbose_name_plural = ("Tags")
 
 
 # Create your models here.
@@ -22,7 +32,7 @@ class News(models.Model, HitCountMixin):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, on_delete=models.CASCADE)
     title = models.CharField(null=True,  blank = True, max_length=200 )
-    short_txt = models.CharField(null=True,  blank = True, max_length=60, validators=[MinLengthValidator(58)])
+    short_txt = models.CharField(null=True,  blank = True, max_length=200, validators=[MinLengthValidator(60)])
     body_txt = RichTextUploadingField(null=True,  blank = True)
     pub_date = models.DateTimeField(null=True,)
     slug = models.SlugField(null=True, unique=True, default='ibmn_news')
@@ -30,7 +40,7 @@ class News(models.Model, HitCountMixin):
                                            format='JPEG',
                                            options={'quality': 60})         
     category = models.ForeignKey('categories.Subcategory', on_delete=models.CASCADE, related_name='categories', null=True, blank=True)
-    tags = TaggableManager()
+    tags = TaggableManager(through=UUIDTaggedItem)
     hit_count_generic = GenericRelation(HitCount, object_id_field = 'object_pk', related_query_name='hit_count_generic_relation')
     
 

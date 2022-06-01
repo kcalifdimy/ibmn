@@ -12,7 +12,7 @@ class CreateNewsForm(forms.ModelForm):
 
 
     title = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'type':'text',  'data-constraints':'@Required'}))
-    short_txt = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'type':'text','maxlength':'62','minlength':'58','data-constraints':'@Required'}))
+    short_txt = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'type':'text','maxlength':'200','minlength':'60','data-constraints':'@Required'}))
     #timestamp = forms.DateField(widget=forms.DateInput(attrs={'type':'date', 'class':'form-control'}))
     image = forms.ImageField(widget=forms.FileInput(attrs={'id':'formFile','type':'file', 'class':'control'}))
     slug = forms.SlugField(widget=forms.TextInput(attrs={"class": "form-control", 'type':'text'}))

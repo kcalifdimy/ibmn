@@ -65,5 +65,6 @@ class EditBigNewsForm(forms.ModelForm):
                     "image",
                     "category_name",
                     "body_txt",
+                    "tags"
                     ]
 

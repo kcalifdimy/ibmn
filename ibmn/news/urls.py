@@ -17,6 +17,7 @@ urlpatterns = [
     path("home/", view= manager_home_view, name="manager_home"),
     path('update/<uuid:uuid>/', view=manager_update_view, name='manager_update_news'),
     path('delete/<uuid:uuid>/', view=manager_delete_view, name='manager_delete_news'),
+    #path("<slug:tag_slug>/", view=news_details_view, name="news_tag_detail"),
     path("<slug:slug>/", view=news_details_view, name="news_detail"),
     path('comment/reply/', reply_page, name="reply"),
     path('list/', view=search_list_news_view, name='search'),

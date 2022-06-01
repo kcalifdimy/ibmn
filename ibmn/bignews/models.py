@@ -6,6 +6,8 @@ from django.db import models
 from django.urls import reverse
 from django.template.defaultfilters import slugify 
 from django.conf import settings
+from taggit.models import GenericUUIDTaggedItemBase, TaggedItemBase
+from taggit.managers import TaggableManager
 from hitcount.models import HitCountMixin, HitCount
 from imagekit.models import ProcessedImageField
 from imagekit.processors import ResizeToFill
@@ -16,6 +18,15 @@ from ibmn.categories.models import Category
 
 
 # Create your models here.
+
+class UUIDTaggedItem(GenericUUIDTaggedItemBase, TaggedItemBase):
+    # If you only inherit GenericUUIDTaggedItemBase, you need to define
+    # a tag field. e.g.
+    # tag = models.ForeignKey(Tag, related_name="uuid_tagged_items", on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = ("Tag")
+        verbose_name_plural = ("Tags")
 
 class Bignews(models.Model, HitCountMixin):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -30,6 +41,7 @@ class Bignews(models.Model, HitCountMixin):
                                            options={'quality': 100})
      
     category = models.ForeignKey('categories.Category', on_delete=models.CASCADE, related_name='bignews_categories', null=True, blank=True)
+    tags = TaggableManager(through=UUIDTaggedItem)
     hit_count_generic = GenericRelation(HitCount, object_id_field = 'object_pk', related_query_name='hit_count_generic_relation')
 
 
