@@ -1,4 +1,4 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.views import View
 from django.views.generic.base import TemplateView
@@ -31,4 +31,12 @@ class LoginView(View):
         return render(request, self.template_name, context={'form': form, 'message': message})
 
 
- 
+
+
+class LogoutView(View):
+    def get(self, request):
+        logout(request)
+        return redirect('users:login')
+
+
+logout_view  = LogoutView.as_view() 
