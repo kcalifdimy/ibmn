@@ -7,23 +7,23 @@
 
   {% block content %}
 
-  <!-- ======= Sidebar ======= -->
+<!-- ======= Sidebar ======= -->
   <aside id="sidebar" class="sidebar">
 
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href=" {% url 'news:manager_home' %}">
+        <a class="nav-link collapsed" href="{% url 'news:manager_home' %}">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-layout-text-window-reverse"></i><span> Add News</span><i class="bi bi-chevron-down ms-auto"></i>
+        <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-menu-button-wide"></i><span>Add Breaking News</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">   
           <li>
             <a href=" {% url 'news:create' %}">
               <i class="bi bi-circle"></i><span>Add News</span>
@@ -45,14 +45,15 @@
             </a>
           </li>
         </ul>
-      </li><!-- End Tables Nav -->
-   
+      </li><!-- End Components Nav -->
 
-       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-layout-text-window-reverse"></i><span> View News</span><i class="bi bi-chevron-down ms-auto"></i>
+      <li class="nav-item">
+        <a class="nav-link " data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-journal-text"></i><span>View Breaking News</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <ul id="forms-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
+
+
           <li>
             <a href=" {% url 'news:manager_list_post' %}">
               <i class="bi bi-circle"></i><span>View News</span>
@@ -70,30 +71,27 @@
           </li>
           <li>
             <a href="{% url 'bignews:bignews_list_post' %}">
-              <i class="bi bi-circle"></i><span>View Trending News</span>
+              <i class="bi bi-circle"></i><span>View Big News</span>
             </a>
           </li>
+
+
+
         </ul>
-      </li><!-- End Tables Nav -->
-   
-      <!-- End Profile Page Nav -->      
+      </li><!-- End Forms Nav -->     
     </ul>
 
-  </aside>
+  </aside><!-- End Sidebar-->
 
-  <!-- End Sidebar-->
-
-
-  
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>News</h1>
+      <h1> Breaking News</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href=" {% url 'news:manager_home' %}">Home</a></li>
           <li class="breadcrumb-item">Tables</li>
-          <li class="breadcrumb-item active">News</li>
+          <li class="breadcrumb-item active">Breaking News</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -105,7 +103,7 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">List of News</h5>
+              <h5 class="card-title">List of Breaking News</h5>
 
               <!-- Table with stripped rows -->
               <table class="table table-striped">
@@ -141,6 +139,7 @@
     </section>
 
   </main><!-- End #main -->
+
 
   {% endblock %}
 

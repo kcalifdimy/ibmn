@@ -13,16 +13,18 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href=" {% url 'news:manager_home' %}">
+        <a class="nav-link collapsed" href=" {% url 'news:manager_home' %}">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
       </li><!-- End Dashboard Nav -->
+
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-layout-text-window-reverse"></i><span> Add News</span><i class="bi bi-chevron-down ms-auto"></i>
+        <a class="nav-link " data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-menu-button-wide"></i><span>Add News</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <ul id="components-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
+         
           <li>
             <a href=" {% url 'news:create' %}">
               <i class="bi bi-circle"></i><span>Add News</span>
@@ -43,14 +45,19 @@
               <i class="bi bi-circle"></i><span>Add BiG News</span>
             </a>
           </li>
+
         </ul>
-      </li><!-- End Tables Nav -->
-   
-       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-layout-text-window-reverse"></i><span> View News</span><i class="bi bi-chevron-down ms-auto"></i>
+      </li><!-- End Components Nav -->
+
+
+
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-journal-text"></i><span>View News</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+
           <li>
             <a href=" {% url 'news:manager_list_post' %}">
               <i class="bi bi-circle"></i><span>View News</span>
@@ -71,65 +78,63 @@
               <i class="bi bi-circle"></i><span>Add Trending News</span>
             </a>
           </li>
+
+
         </ul>
-      </li><!-- End Tables Nav -->
-   
+      </li><!-- End Forms Nav -->
+
+
     </ul>
 
-  </aside>
+  </aside><!-- End Sidebar-->
 
-  <!-- End Sidebar-->
+    <!-- start #main -->
 
   <main id="main" class="main">
 
-    <div class="pagetitle">
-      <h1>Add News</h1>
-      <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="{% url 'news:manager_home' %}">Home</a></li>
-          <li class="breadcrumb-item active">form</li>
-        </ol>
-      </nav>
-    </div><!-- End Page Title -->
-
-    <section class="section">
-      <div class="row">
-        <div class="col-lg-12">
-
-          <div class="card">
-            <div class="card-body">
-
-              <!-- General Form Elements -->
-              <h5 class="card-title"> </h5>
-              {% include 'core/messages.html' %}
-              
-              <form  method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                {{ form.media }}
-                {{ form.as_p }} 
-
-                <div class="row mb-3">
-                  <div class="col-sm-10">
-                    <button type="submit" class="btn btn-primary">Submit Form</button>
+      <div class="pagetitle">
+        <h1>Add News</h1>
+        <nav>
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'news:manager_home' %}">Home</a></li>
+            <li class="breadcrumb-item active">form</li>
+          </ol>
+        </nav>
+      </div><!-- End Page Title -->
+  
+      <section class="section">
+        <div class="row">
+          <div class="col-lg-12">
+  
+            <div class="card">
+              <div class="card-body">
+  
+                <!-- General Form Elements -->
+                <h5 class="card-title"> </h5>
+                {% include 'core/messages.html' %}
+                
+                <form  method="post" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  {{ form.media }}
+                  {{ form.as_p }} 
+  
+                  <div class="row mb-3">
+                    <div class="col-sm-10">
+                      <button type="submit" class="btn btn-primary">Submit Form</button>
+                    </div>
                   </div>
-                </div>
-              </form><!-- End General Form Elements -->
-
+                </form><!-- End General Form Elements -->
+  
+              </div>
             </div>
-          </div>
-
+  
+          </div>       
         </div>
+      </section>
+  
+  </main>
+  <!-- End #main -->
 
-
-
-
-
-
-       
-      </div>
-    </section>
-
-  </main><!-- End #main -->
   {% endblock %}
 
    
