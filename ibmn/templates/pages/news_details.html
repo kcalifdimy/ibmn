@@ -16,26 +16,27 @@
                 </div>
                 <h3>{{news.short_txt}}</h3>
 
-                {{news.body_txt|safe}}
-
-                
-                  <div class="share-section">
+                <div class="share-section">
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 life-style">
                             <span class="author"> 
-                                <a href="#"><i class="fa fa-user-o" aria-hidden="true"></i> {{news.pub_date}} </a>
+                                <a href="#"><i class="fa fa-user-o" aria-hidden="true"></i>christainddddddd ddessddsssjames </a>
                             </span> 
+                            <span class="date">
+                                <i class="fa fa-calendar-check-o" aria-hidden="true"></i>{{news.pub_date.date}}
+                            </span>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <ul class="share-link">
                                 <li class="hvr-bounce-to-right"><a href="#"> Tags:</a></li>
-                                {% for tag in news.tags.all|slice:"3" %}
-                                <li class="hvr-bounce-to-right"><a href="#">{{ tag }}</a></li>
-                                {% endfor %}
+                                <li class="hvr-bounce-to-right"><a href="#"> Food</a></li>
+                                <li class="hvr-bounce-to-right"><a href="#"> bread</a></li>
+
                             </ul>
                         </div>
                     </div>
                 </div>
+                {{news.body_txt|safe}}
 
                 <div class="share-section share-section2">
                     <div class="row">
