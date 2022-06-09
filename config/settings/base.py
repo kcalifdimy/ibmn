@@ -82,7 +82,8 @@ THIRD_PARTY_APPS = [
     "hitcount",
     "cloudinary",
     "embed_video",
-    "taggit"
+    "taggit",
+    "django_social_share"
     
 ]
 

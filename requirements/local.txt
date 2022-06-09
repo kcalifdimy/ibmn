@@ -38,3 +38,4 @@ django-anymail[mailgun]==8.5  # https://github.com/anymail/django-anymail
 cloudinary
 dj3-cloudinary-storage
 django-taggit
+django-social-share
