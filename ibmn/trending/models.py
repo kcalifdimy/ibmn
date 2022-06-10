@@ -6,8 +6,8 @@ from django.template.defaultfilters import slugify
 from django.conf import settings
 from taggit.models import GenericUUIDTaggedItemBase, TaggedItemBase
 from taggit.managers import TaggableManager
-from imagekit.models import ProcessedImageField
-from imagekit.processors import ResizeToFill
+#from imagekit.models import ProcessedImageField
+#rom imagekit.processors import ResizeToFill
 from ckeditor_uploader.fields import  RichTextUploadingField
 from mptt.models import MPTTModel, TreeForeignKey
 from ibmn.categories.models import Category
@@ -33,9 +33,11 @@ class Trending(models.Model):
     body_txt = RichTextUploadingField(null=True,  blank = True)
     pub_date =  models.DateTimeField(null=True,)
     slug = models.SlugField(null=True, unique=True, default='ibmn')
-    image = ProcessedImageField(upload_to='profile_image',processors=[ResizeToFill(668, 455)],
-                                           format='JPEG',
-                                           options={'quality': 100})
+    #image = models.ImageField(upload_to='profile_image')
+
+    #image = ProcessedImageField(upload_to='profile_image',processors=[ResizeToFill(668, 455)],
+     #                                      format='JPEG',
+      #                                     options={'quality': 100})
      
     category_name = models.ForeignKey('categories.Category', on_delete=models.CASCADE, null=True, blank=True)
     tags = TaggableManager(through=UUIDTaggedItem)

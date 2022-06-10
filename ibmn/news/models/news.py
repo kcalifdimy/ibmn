@@ -8,8 +8,8 @@ from django.template.defaultfilters import slugify
 from django.conf import settings
 from taggit.managers import TaggableManager
 from hitcount.models import HitCountMixin, HitCount
-from imagekit.models import ProcessedImageField
-from imagekit.processors import ResizeToFill
+#from imagekit.models import ProcessedImageField
+#from imagekit.processors import ResizeToFill
 from ckeditor_uploader.fields import  RichTextUploadingField
 from mptt.models import MPTTModel, TreeForeignKey
 from taggit.models import GenericUUIDTaggedItemBase, TaggedItemBase
@@ -36,9 +36,8 @@ class News(models.Model, HitCountMixin):
     body_txt = RichTextUploadingField(null=True,  blank = True)
     pub_date = models.DateTimeField(null=True,)
     slug = models.SlugField(null=True, unique=True, default='ibmn_news')
-    image = ProcessedImageField(upload_to='profile_image',processors=[ResizeToFill(612, 408)],
-                                           format='JPEG',
-                                           options={'quality': 60})         
+    #image = models.ImageField(upload_to='profile_image')
+    image = models.ImageField(upload_to='profile_image', null=True)         
     category = models.ForeignKey('categories.Subcategory', on_delete=models.CASCADE, related_name='categories', null=True, blank=True)
     tags = TaggableManager(through=UUIDTaggedItem)
     hit_count_generic = GenericRelation(HitCount, object_id_field = 'object_pk', related_query_name='hit_count_generic_relation')
