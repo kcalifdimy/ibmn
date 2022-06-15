@@ -40,7 +40,6 @@
                             <img src="{{trend_business_news.image.url}}" alt="" title="#slider-direction-2" />
                             <img src="{{trend_arts_news.image.url}}" alt="" title="#slider-direction-3" />
                             <img src="{{trend_sports_news.image.url}}"alt="" title="#slider-direction-4" />
-                       
                         </div>
                         <!-- direction 2 -->
                         <div id="slider-direction-1" class="slider-direction">
@@ -130,9 +129,9 @@
                     <ul>
                         <li>
                             <div class="right-content">
-                                <span class="category"><a class="cat-link" href="blog.html">LIFESTYLE</a></span> 
+                                <span class="category"><a class="cat-link" href="{% url 'trending:trendnews_detail' trend_lifestyle_news.slug %}">LIFESTYLE</a></span> 
                                 <span class="date"><i class="fa fa-calendar-check-o" aria-hidden="true"> </i> {{trend_lifestyle_news.pub_date}}</span>
-                                <h3><a href="{% url 'trending:trendnews_detail' trend_lifestyle_news.slug %} ">{{trend_lifestyle_news.short_txt}}</a></h3>
+                                <h3><a href="{% url 'trending:trendnews_detail' trend_lifestyle_news.slug %}">{{trend_lifestyle_news.short_txt}}</a></h3>
                             </div>
                             {% if trend_lifestyle_news.image %}
                             <div class="right-image"><a href="{% url 'trending:trendnews_detail' trend_lifestyle_news.slug %} "><img src="{{trend_lifestyle_news.image.url}}" alt="sidebar image" height="184"></a></div>
@@ -140,7 +139,7 @@
                         </li>
                         <li>
                             <div class="right-content">
-                                <span class="category"><a class="cat-link" href="blog.html">Health</a></span> 
+                                <span class="category"><a class="cat-link" href="{% url 'trending:trendnews_detail' trend_health_news.slug %}">Health</a></span> 
                                 <span class="date"><i class="fa fa-calendar-check-o" aria-hidden="true"> </i> {{trend_health_news.pub_date}}</span>
                                 <h3><a href="{% url 'trending:trendnews_detail' trend_health_news.slug %}">{{trend_health_news.short_txt}}</a></h3>
                             </div>
@@ -150,7 +149,7 @@
                         </li>
                         <li>
                             <div class="right-content">
-                                <span class="category"><a class="cat-link" href="blog.html">Scitech</a></span> 
+                                <span class="category"><a class="cat-link" href="{% url 'trending:trendnews_detail' trend_scitech_news.slug %}">Scitech</a></span> 
                                 <span class="date"><i class="fa fa-calendar-check-o" aria-hidden="true"> </i> {{trend_scitech_news.pub_date}}</span>
                                 <h3><a href="{% url 'trending:trendnews_detail' trend_scitech_news.slug %}">{{trend_scitech_news.short_txt}}</a></h3>
                             </div>

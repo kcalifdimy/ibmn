@@ -90,7 +90,9 @@ trend_manager_delete_view = TrendManagerDeleteView.as_view()
 def trending_news_details_view(request, slug):
     trendnews=get_object_or_404(Trending,slug=slug)
 
-    similar_trendnews = trendnews.tags.similar_objects()[:4]
+    #similar_trendnews = trendnews.tags.similar_objects()[:4]
+    similar_trendnews =  trendnews.tags.similar_objects()[:4]
+
 
 
     # List of active comments for this post
@@ -113,7 +115,7 @@ def trending_news_details_view(request, slug):
     # List of similar posts
     
     return render(request, 'pages/trendnews_details.html', {'trendnews':trendnews,'trendnews_comments': trendnews_comments,
-                                                            'comment_form':comment_form , 'similar_trendnews':similar_trendnews
+                                                            'comment_form':comment_form, 'similar_trendnews':similar_trendnews
                                                             })
 
 

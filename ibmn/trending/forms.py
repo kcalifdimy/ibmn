@@ -13,9 +13,9 @@ class CreateTrendForm(forms.ModelForm):
     title = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'type':'text',  'data-constraints':'@Required'}))
     short_txt = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'type':'text','data-constraints':'@Required'}))
     image = forms.ImageField(widget=forms.FileInput(attrs={'id':'formFile','type':'file', 'class':'control'}))
-    slug = forms.SlugField(widget=forms.TextInput(attrs={"class": "form-control", 'type':'text'}))
+    #slug = forms.SlugField(widget=forms.TextInput(attrs={"class": "form-control", 'type':'text'}))
     #pub_date = forms.DateField(widget=forms.DateInput(attrs={'type':'date', 'class':'form-control'}))
-    category_name = forms.ModelChoiceField(queryset=Category.objects.all())
+    #category_name = forms.ModelChoiceField(queryset=Category.objects.all())
     body_txt =forms.CharField(widget=CKEditorUploadingWidget(attrs={'class':'form-control', 'rows':'5', 'cols':'50','data-constraints':'@Required'}))
    
    
@@ -27,14 +27,18 @@ class CreateTrendForm(forms.ModelForm):
                     "title",
                     "short_txt",
                     "body_txt",
-                    "slug",
+                    #"slug",
                     #"pub_date",
                     "image",
                     "category_name",
                     "tags"
                     ]
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['category_name'] = forms.ModelChoiceField(queryset=Category.objects.all())
 
+        
     def clean_image(self):
 
         IMAGE_FILE_TYPES = ['png', 'jpg', 'jpeg']

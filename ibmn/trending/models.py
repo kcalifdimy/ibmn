@@ -1,8 +1,9 @@
 import uuid
+from  PIL import Image
 from datetime import datetime
 from django.db import models
 from django.urls import reverse
-from django.template.defaultfilters import slugify 
+from django.utils.text import slugify
 from django.conf import settings
 from taggit.models import GenericUUIDTaggedItemBase, TaggedItemBase
 from taggit.managers import TaggableManager
@@ -32,37 +33,48 @@ class Trending(models.Model):
     short_txt = models.CharField(null=True,  blank = True,  max_length=200)
     body_txt = RichTextUploadingField(null=True,  blank = True)
     pub_date =  models.DateTimeField(null=True,)
-    slug = models.SlugField(null=True, unique=True, default='ibmn')
-    #image = models.ImageField(upload_to='profile_image')
+    slug = models.SlugField(null=True, unique=True)
+    image = models.ImageField(upload_to='profile_image', null=True)
 
-    #image = ProcessedImageField(upload_to='profile_image',processors=[ResizeToFill(668, 455)],
-     #                                      format='JPEG',
-      #                                     options={'quality': 100})
-     
     category_name = models.ForeignKey('categories.Category', on_delete=models.CASCADE, null=True, blank=True)
     tags = TaggableManager(through=UUIDTaggedItem)
-
-
-    def get_absolute_url(self):
-        return reverse('trending:trendnews_detail', kwargs={'slug': self.slug})
-
 
 
 
     class Meta:
         ordering = ['-pub_date']
 
-    def save(self, *args, **kwargs):
-        if self.pub_date is None:
-            self.pub_date = datetime.now()
-        if not self.slug:
-            self.slug = slugify(self.title)
-        return super().save(*args, **kwargs)
-    
+
+    def get_absolute_url(self):
+        return reverse('trending:trendnews_detail', kwargs={'slug': self.slug})
+
+
     def get_comments(self):
         return self.trendnews_comments.filter(parent=None).filter(active=True)
 
+    def save(self, *args, **kwargs):
+        self.pub_date = datetime.now()
+        self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
 
+        if self.pub_date is None:
+            self.pub_date = datetime.now()
+            self.save()
+        if self.slug is None:
+            self.slug = slugify(self.title)
+            self.save()
+
+        if self.image:
+            img = Image.open(self.image.path)
+
+            if img.height > 552 or img.width > 770:
+                new_height = 552
+                new_width = 770
+                img = img.resize((new_width, new_height))
+                img.save(self.image.path) 
+        
+    
+  
         
     def __str__(self):
         return self.title

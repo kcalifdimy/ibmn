@@ -36,7 +36,6 @@ class News(models.Model, HitCountMixin):
     body_txt = RichTextUploadingField(null=True,  blank = True)
     pub_date = models.DateTimeField(null=True,)
     slug = models.SlugField(null=True, unique=True, default='ibmn_news')
-    #image = models.ImageField(upload_to='profile_image')
     image = models.ImageField(upload_to='profile_image', null=True)         
     category = models.ForeignKey('categories.Subcategory', on_delete=models.CASCADE, related_name='categories', null=True, blank=True)
     tags = TaggableManager(through=UUIDTaggedItem)
@@ -53,8 +52,6 @@ class News(models.Model, HitCountMixin):
         
     def get_comments(self):
         return self.comments.filter(parent=None).filter(active=True)
-
-
 
     def save(self, *args, **kwargs):
         if self.pub_date is None:

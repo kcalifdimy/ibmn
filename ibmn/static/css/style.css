@@ -966,10 +966,12 @@ ul {
   overflow: hidden;
 }
 
+
 .slider-area-sub .slides  {
   position: relative;
   overflow: hidden;
 }
+
 
 .slider-area .slides:after {
   background: rgba(0, 0, 0, 0.5);
@@ -1251,8 +1253,9 @@ a.cat-link:hover {
 .slider-right ul li .right-content .date i {
   padding-left: 0;
 }
-.slider-right ul li .right-image img {
-  height: 189px;
+.slider-right ul li img {
+  height: 178px;
+  width: 100% ;
   transition: all 0.5s ease 0s;
 }
 .slider-right ul li:after {

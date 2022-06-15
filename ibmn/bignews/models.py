@@ -1,4 +1,5 @@
 import uuid
+from  PIL import Image
 from datetime import datetime
 from django.core.validators import MinLengthValidator
 from django.contrib.contenttypes.fields import GenericRelation
@@ -34,40 +35,46 @@ class Bignews(models.Model, HitCountMixin):
     title = models.CharField(null=True,  blank = True, max_length=200 )
     short_txt = models.CharField(null=True,  blank = True,  max_length=200)
     body_txt = RichTextUploadingField(null=True,  blank = True)
-    pub_date =  models.DateTimeField(null=True,)
-    slug = models.SlugField(null=True, unique=True, default='ibmn')
-    #image = models.ImageField(upload_to='profile_image')
-
-    #image = ProcessedImageField(upload_to='profile_image',processors=[ResizeToFill(668, 455)],
-     #                                      format='JPEG',
-      #                                     options={'quality': 60})
+    pub_date = models.DateTimeField(null=True,)
+    slug = models.SlugField(null=True, unique=True)
+    image = models.ImageField(upload_to='profile_image', null=True)         
     category = models.ForeignKey('categories.Category', on_delete=models.CASCADE, related_name='bignews_categories', null=True, blank=True)
     tags = TaggableManager(through=UUIDTaggedItem)
     hit_count_generic = GenericRelation(HitCount, object_id_field = 'object_pk', related_query_name='hit_count_generic_relation')
 
 
-
     class Meta:
         ordering = ['-pub_date']
 
-        
+      
     def get_absolute_url(self):
         return reverse('bignews:bignews_detail', kwargs={'slug': self.slug})
-
-
+      
          
     def get_comments(self):
         return self.bignews_comments.filter(parent=None).filter(active=True)
 
     
-
     def save(self, *args, **kwargs):
+        self.pub_date = datetime.now()
+        self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
+
         if self.pub_date is None:
             self.pub_date = datetime.now()
-        if not self.slug:
+            self.save()
+        if self.slug is None:
             self.slug = slugify(self.title)
-        return super().save(*args, **kwargs)
+            self.save()
 
+        if self.image:
+            img = Image.open(self.image.path)
+
+            if img.height > 552 or img.width > 770:
+                new_height = 552
+                new_width = 770
+                img = img.resize((new_width, new_height))
+                img.save(self.image.path)    
 
     def __str__(self):
         return self.title
