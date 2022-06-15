@@ -28,6 +28,7 @@ class TrendCreateView(View):
         form = self.form_class(request.POST, request.FILES)
         if form.is_valid():
             form.save()
+            form = self.form_class()
             messages.success(request, 'Your news was successfully posted!')
 
         return render(request,self.template_name, {'form':form})
@@ -58,7 +59,7 @@ class TrendUpdateView(UpdateView):
     # url to redirect after successfully
     # updating details
     def get_success_url(self):
-       return reverse("news:manager_home")
+       return reverse("trending:trend_list_post")
    
 
 trend_update_view  = TrendUpdateView.as_view()
@@ -79,19 +80,19 @@ class TrendManagerDeleteView(LoginRequiredMixin, DeleteView):
     # url to redirect after successfully
     # updating details
     def get_success_url(self):
-       return reverse("news:manager_home")
+       return reverse("trending:trend_list_post")
    
-
 trend_manager_delete_view = TrendManagerDeleteView.as_view()
 
 
 
 
 def trending_news_details_view(request, slug):
-    trendnews=get_object_or_404(Trending,slug=slug)
+    trendnews = get_object_or_404(Trending, slug=slug)
 
-    #similar_trendnews = trendnews.tags.similar_objects()[:4]
+
     similar_trendnews =  trendnews.tags.similar_objects()[:4]
+
 
 
 

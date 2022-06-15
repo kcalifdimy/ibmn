@@ -29,6 +29,7 @@ class NewsCreateView(View):
         form = self.form_class(request.POST, request.FILES)
         if form.is_valid():
             form.save()
+            form = self.form_class()
             messages.success(request, 'Your news was successfully posted!')
 
         return render(request,self.template_name, {'form':form})
@@ -81,7 +82,7 @@ class ManagerUpdateView(LoginRequiredMixin, UpdateView):
     # url to redirect after successfully
     # updating details
     def get_success_url(self):
-       return reverse("news:manager_home")
+       return reverse("news:manager_list_post")
    
 
 manager_update_view  = ManagerUpdateView.as_view()
@@ -103,7 +104,7 @@ class ManagerDeleteView(LoginRequiredMixin, DeleteView):
     # url to redirect after successfully
     # updating details
     def get_success_url(self):
-       return reverse("news:manager_home")
+       return reverse("news:manager_list_post")
    
 
 manager_delete_view  = ManagerDeleteView.as_view()

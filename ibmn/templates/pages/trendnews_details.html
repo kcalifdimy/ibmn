@@ -1,6 +1,7 @@
 {% extends "base2.html" %}
 
 {% load static i18n %}
+{% load social_share %}
 
 
 {% block content %}
@@ -22,13 +23,16 @@
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 life-style">
                             <span class="author"> 
-                                <a href="#"><i class="fa fa-user-o" aria-hidden="true"></i> {{trendnews.pub_date}} </a>
+                                <a href="#"><i class="fa fa-user-o" aria-hidden="true"></i>{{request.user.get_full_name}} </a>
                             </span> 
+                            <span class="date">
+                                <i class="fa fa-calendar-check-o" aria-hidden="true"></i>{{trendnews.pub_date.date}}
+                            </span>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <ul class="share-link">
                                 <li class="hvr-bounce-to-right"><a href="#"> Tags:</a></li>
-                                    {% for tag in trendnews.tags.all|slice:"3" %}
+                                    {% for tag in trendnews.tags.all|slice:"2" %}
                                     <li class="hvr-bounce-to-right"><a href="#">{{ tag }}</a></li>
                                     {% endfor %}
                                 </ul>
@@ -43,9 +47,10 @@
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <ul class="share-link">
-                                <li class="hvr-bounce-to-right"><a href="#"> <i class="fa fa-facebook" aria-hidden="true"></i> Facebook</a></li>
-                                <li class="hvr-bounce-to-right"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a></li>
-                                <li class="hvr-bounce-to-right"><a href="#"><i class="fa fa-google" aria-hidden="true"></i> Google</a></li>
+                               <li class="hvr-bounce-to-right"> {% post_to_facebook object_or_url "Facebook" %} </li> 
+                               <li class="hvr-bounce-to-right"> {% post_to_whatsapp object_or_url "Whatsapp" %} </li> 
+                               <li class="hvr-bounce-to-right"> {% post_to_twitter object_or_url "Twitter" %} </li> 
+
                             </ul>
                         </div>
                     </div>

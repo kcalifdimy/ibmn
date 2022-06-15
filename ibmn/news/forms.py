@@ -15,7 +15,7 @@ class CreateNewsForm(forms.ModelForm):
     short_txt = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'type':'text','maxlength':'200','minlength':'60','data-constraints':'@Required'}))
     #timestamp = forms.DateField(widget=forms.DateInput(attrs={'type':'date', 'class':'form-control'}))
     image = forms.ImageField(widget=forms.FileInput(attrs={'id':'formFile','type':'file', 'class':'control'}))
-    slug = forms.SlugField(widget=forms.TextInput(attrs={"class": "form-control", 'type':'text'}))
+   # slug = forms.SlugField(widget=forms.TextInput(attrs={"class": "form-control", 'type':'text'}))
     #pub_date = forms.DateField(widget=forms.DateInput(attrs={'type':'date', 'class':'form-control'}))
     body_txt =forms.CharField(widget=CKEditorUploadingWidget(attrs={'class':'form-control', 'rows':'5', 'cols':'50','data-constraints':'@Required'}))
    
@@ -28,7 +28,7 @@ class CreateNewsForm(forms.ModelForm):
                     "title",
                     "short_txt",
                     "body_txt",
-                    "slug",
+                    #"slug",
                     #"pub_date",
                     "image",
                     "category",

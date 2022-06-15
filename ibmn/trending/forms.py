@@ -75,8 +75,6 @@ class EditTrendForm(forms.ModelForm):
     body_txt =forms.CharField(widget=CKEditorUploadingWidget(attrs={'class':'form-control', 'rows':'5', 'cols':'50','data-constraints':'@Required'}))
     
     
-   
-   
     class Meta:
             model = Trending
             fields = [
@@ -87,5 +85,5 @@ class EditTrendForm(forms.ModelForm):
                     "image",
                     "category_name",
                     "body_txt",
-                    ]
+                ]
 

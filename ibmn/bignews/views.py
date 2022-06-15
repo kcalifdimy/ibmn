@@ -28,6 +28,8 @@ class BignewsCreateView(View):
         form = self.form_class(request.POST, request.FILES)
         if form.is_valid():
             form.save()
+            form = self.form_class()
+
             messages.success(request, 'Your news was successfully posted!')
 
         return render(request,self.template_name, {'form':form})
@@ -60,7 +62,7 @@ class BignewsUpdateView(LoginRequiredMixin, UpdateView):
     # url to redirect after successfully
     # updating details
     def get_success_url(self):
-       return reverse("news:manager_home")
+       return reverse("bignews:bignews_list_post")
    
 
 bignews_update_view  = BignewsUpdateView.as_view()
@@ -83,7 +85,7 @@ class BignewsManagerDeleteView(LoginRequiredMixin, DeleteView):
     # url to redirect after successfully
     # updating details
     def get_success_url(self):
-       return reverse("news:manager_home")
+       return reverse("bignews:bignews_list_post")
    
 
 bignews_manager_delete_view = BignewsManagerDeleteView.as_view()
@@ -94,7 +96,7 @@ bignews_manager_delete_view = BignewsManagerDeleteView.as_view()
 
 
 def big_news_details_view(request, slug):
-    bignews=get_object_or_404(Bignews,slug=slug)
+    bignews=get_object_or_404(Bignews, slug=slug)
 
     similar_bignews =  bignews.tags.similar_objects()[:4]
 

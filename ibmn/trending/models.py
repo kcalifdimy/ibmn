@@ -26,6 +26,7 @@ class UUIDTaggedItem(GenericUUIDTaggedItemBase, TaggedItemBase):
         verbose_name = ("Tag")
         verbose_name_plural = ("Tags")
 
+
 class Trending(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, on_delete=models.CASCADE)
@@ -35,9 +36,10 @@ class Trending(models.Model):
     pub_date =  models.DateTimeField(null=True,)
     slug = models.SlugField(null=True, unique=True)
     image = models.ImageField(upload_to='profile_image', null=True)
-
     category_name = models.ForeignKey('categories.Category', on_delete=models.CASCADE, null=True, blank=True)
     tags = TaggableManager(through=UUIDTaggedItem)
+
+
 
 
 
